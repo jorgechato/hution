@@ -24,9 +24,9 @@
                 {{ end }}
 
                 {{ if eq .Type "post" }}
-                {{ if .Params.Excerpt }}
+                {{ if .Params.Summary }}
                 <div class="post-entry">
-                    <p>{{ .Params.Excerpt }}</p>
+                    <p>{{ .Params.Summary }}</p>
                 </div>
                 {{ end }}
                 {{ partial "postmeta.html" . }}
