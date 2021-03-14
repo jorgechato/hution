@@ -8,7 +8,9 @@
         {{ end }}
 
         {{ range .Paginator.Pages }}
+        {{ if not .Params.Draft }}
         {{ partial "preview.html" . }}
+        {{ end }}
         {{ end }}
     </div>
     {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
