@@ -1,0 +1,28 @@
+<footer>
+    {{ if .IsTranslated }}
+    <p>
+        {{ range .Translations }}
+        <a href="{{ .Permalink }}" name="{{ .Language.LanguageName }}">{{ .Language.LanguageName }}</a>
+        {{ end }}
+    </p>
+    {{ end }}
+    <div class="container">
+        <p class="credits copyright">
+            &copy; {{ .Site.LastChange.Format "2006" }}
+            {{ if .Site.Title }}
+            <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>.
+            {{ end }}
+            {{ i18n "all-rights" }}.
+        </p>
+
+        <p class="credits theme-by">
+            {{ i18n "design-with" }} {{ ":heart:" | emojify }} {{ i18n "by" }}
+            <a href="https://jorgechato.com/">@jorgechato</a>.
+            <a href="https://github.com/jorgechato/hution">Hution</a> {{ i18n "theme" }}.
+        </p>
+    </div>
+    {{ partial "social.html" . }}
+
+    {{ partial "style.html" . }}
+    {{ partial "script.html" . }}
+</footer>

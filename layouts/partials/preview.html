@@ -1,0 +1,15 @@
+<article class="post-preview">
+    <a href="{{ .Permalink }}">
+        <h2 class="post-title">
+            {{ if .Params.Emoji }}
+                {{ .Params.Emoji | emojify }}
+            {{ end }}
+            {{ .Title }}
+        </h2>
+    </a>
+    {{ if .Params.Excerpt }}
+    <div class="post-entry">
+        <p>{{ .Params.Excerpt }}</p>
+    </div>
+    {{ end }}
+</article>
