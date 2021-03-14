@@ -1,14 +1,12 @@
 ---
-emoji: ":notebook:"
+emoji: ":writing_hand:"
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
 date: {{ .Date }}
-tags: [""]
+author: {{ .Site.Author.name }}
 categories: [""]
+tags: [""]
 draft: false
 toc: true
 backtotop: false
-author: "{{ .Site.Author.name }}"
-excerpt: |
-    TODO replace this excerpt
+summary: ""
 ---
-
