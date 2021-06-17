@@ -1,0 +1,43 @@
+<div class="site-post feed-entry-content py-12 px-4" role="main">
+    <div class="mx-auto max-w-1100 feed-entry-wrap">
+        <div class="posts-list">
+            {{ if .IsHome }}
+            {{ $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+            {{ else }}
+            {{ $pag := .Paginator.Pages }}
+            {{ end }}
+
+            {{ range .Paginator.Pages }}
+            {{ if not .Params.Draft }}
+            {{ partial "preview.html" . }}
+            {{ end }}
+            {{ end }}
+        </div>
+        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+        <ul class="pager">
+            {{ if .Paginator.HasPrev }}
+            <li class="previous">
+                {{ if $.Site.Params.uglyurls }}
+                <a href="{{ replaceRE " \\.html$" "/" .Permalink }}page/{{ .Paginator.Prev.PageNumber }}.html" >
+                    &larr; {{ i18n "newer" }}
+                </a>
+                    {{ else }}
+                    <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newer" }}</a>
+                    {{ end }}
+            </li>
+            {{ end }}
+            {{ if .Paginator.HasNext }}
+            <li class="next">
+                {{ if $.Site.Params.uglyurls }}
+                <a href="{{ replaceRE " \\.html$" "/" .Permalink }}page/{{ .Paginator.Next.PageNumber }}.html">
+                    {{ i18n "older" }} &rarr;
+                </a>
+                {{ else }}
+                <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "older" }} &rarr;</a>
+                {{ end }}
+            </li>
+            {{ end }}
+        </ul>
+        {{ end }}
+    </div>
+</div>

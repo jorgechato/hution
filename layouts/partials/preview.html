@@ -1,6 +1,6 @@
 <article class="post-preview">
     <a href="{{ .Permalink }}">
-        <h2 class="post-title">
+        <h2 class="post-title story-title text-2xl font-sans text-title leading-tight">
             {{ if .Params.Emoji }}
                 {{ .Params.Emoji | emojify }}
             {{ end }}
@@ -8,7 +8,7 @@
         </h2>
     </a>
     {{ if .Params.Summary }}
-    <div class="post-entry">
+    <div class="post-entry story-excerpt mb-5 leading-normal text-gray-500">
         <p>{{ .Params.Summary }}</p>
     </div>
     {{ end }}

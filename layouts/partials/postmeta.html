@@ -1,15 +1,27 @@
 {{ $readTime := math.Round ( div (countwords .Content) 220.0) }}
-<span class="meta-post">
-    {{ .Site.Author.image }}
-    {{ .Site.Author.name }}
-    &nbsp;{{ .Lastmod.Format ( .Site.Params.dateformat | default "2 Jan 2006") }} ·
-    {{ $readTime }} {{ i18n "min"}} {{ i18n "read" }}
-  {{ if .Params.categories }}
-    &nbsp;&nbsp;&nbsp;<em class="fa fa-folder-open"></em>&nbsp;
-    {{ range .Params.categories }}
-      <a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}{{ if $.Site.Params.uglyurls }}.html{{else}}/{{ end }}">
-          {{ . }}
-      </a>&nbsp;
+
+<div class="meta hh flex items-center relative z-4 flex-auto leading-snug overflow-hidden">
+    {{- with $.Site.GetPage "taxonomyTerm" (printf "author/%s" (urlize .Params.author)) }}
+    <ul class="hh-author flex flex-wrap flex-none mr-3">
+        <li class="hh-author-item realtive">
+            <span class="relative block avatar is-45x45">
+                <a href="{{ .Permalink }}">
+                    <img class="no-zoom absolute u-image block rounded-full" src="{{ .Params.photo }}" alt="Go to the profile of {{ .Params.name }}">
+                </a>
+            </span>
+        </li>
+    </ul>
+
+    <div class="hh-right flex-auto overflow-hidden">
+        <div class="hh-author-name text-sm noWrapWithEllipsis">
+            <a href="{{ .Permalink }}">{{ .Params.name }}</a>
+        </div>
+
+        <div class="hh-date flex items-center text-gray-500 text-sm">
+            {{ .Lastmod.Format ( .Site.Params.dateformat | default "2 Jan 2006") }}
+            <span class="bull mx-1">·</span>
+            {{ $readTime }} {{ i18n "min"}} {{ i18n "read" }}
+        </div>
+    </div>
     {{ end }}
-  {{ end }}
-</span>
+</div>

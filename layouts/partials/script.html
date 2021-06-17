@@ -1,15 +1,16 @@
-<!-- Load theme mode from browser cache -->
+<!-- script -->
+<script src="{{ .Site.BaseURL }}js/main.js"></script>
+<script src="{{ .Site.BaseURL }}js/dark-mode-switch.min.js"></script>
+<script src="{{ .Site.BaseURL }}js/zooming.min.js"></script>
 <script>
-  var darkTheme = document.getElementById('dark-mode-theme')
-  var storedTheme = localStorage.getItem('dark-mode-storage')
-  if (storedTheme === 'dark') {
-    darkTheme.disabled = false
-  } else if (storedTheme === 'light') {
-    darkTheme.disabled = true
-  }
+document.addEventListener('DOMContentLoaded', function () {
+    new Zooming({
+        bgColor: "var(--bg)",
+        bgOpacity: .9,
+        scaleBase: .9,
+    })
+    .listen('figure>img:not(.no-zoom)')
+})
 </script>
 
-<!-- script -->
-<script src="{{ .Site.BaseURL }}js/bundle.js"></script>
-<script src="{{ .Site.BaseURL }}js/instantpage.min.js" type="module" defer></script>
 {{ hugo.Generator -}}

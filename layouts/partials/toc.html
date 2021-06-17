@@ -3,9 +3,10 @@
   {{- $firstH := index $header 0 -}}
 
   {{- if ne $firstH nil -}}
-    {{- $newH := printf `%s%s` .TableOfContents $firstH -}}
+    {{- $tocTitle := i18n "toc" -}}
+    {{- $newH := printf `<h2>%s</h2>%s%s` $tocTitle .TableOfContents $firstH -}}
     {{- replace .Content $firstH $newH | safeHTML -}}
-    {{- else -}}
+  {{- else -}}
     {{- .Content -}}
   {{- end -}}
   {{ else }}

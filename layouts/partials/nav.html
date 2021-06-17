@@ -1,30 +1,70 @@
-<nav class="navbar">
-  <div class="nav">
-    {{ if .Site.Params.logo }}
-        <a href="{{ "" | absLangURL }}" class="nav-logo">
-        <img
-          src="{{ .Site.BaseURL }}images/{{ .Site.Params.logo.url }}"
-          width="{{ .Site.Params.logo.width }}"
-          height="{{ .Site.Params.logo.height }}"
-          alt="{{ .Site.Params.logo.alt }}"
-        />
-        </a>
-    {{ end }}
-
-    <ul class="nav-links">
-      {{ range .Site.Params.nav }}
-        {{ if .icon }}
-          <li>
-            <a href="{{ .url | relLangURL }}" id="{{ .name }}"
-              ><em class="{{ .icon }}"></em
-            ></a>
-          </li>
-          {{ else }}
-          <li>
-            <a href="{{ .url | relLangURL }}" id="{{ .name }}">{{ .name }}</a>
-          </li>
+<header class="header bg-header w-full text-sm flex items-center sticky top-0 z-20">
+    <div class="header-wrap mx-auto flex items-center flex-auto px-4 w-full max-w-extreme">
+        {{ if .Site.Title }}
+        <div class="header-left mr-5 flex flex-none items-center">
+            <a href="/" class="header-logo inline-block leading-none godo-tracking" data-event-category="Header" data-event-action="Logo" data-event-label="Click" data-event-non-interaction="true">
+                <span class="text-2xl font-bold">{{ .Site.Title }}</span>
+            </a>
+        </div>
         {{ end }}
-      {{ end }}
-    </ul>
-  </div>
-</nav>
+
+
+
+        <nav class="header-center mainMenu relative flex items-center pr-5 flex-grow overflow-auto lg:overflow-visible">
+            <ul itemscope="" itemtype="http://www.schema.org/SiteNavigationElement" class="nav whitespace-no-wrap hidden lg:flex">
+
+                {{ $current := . }}
+                {{ range .Site.Params.nav }}
+                <li itemprop="name" class="ml-5">
+                    {{ $active := in $current.RelPermalink .url }}
+                    <a itemprop="url"
+                       href="{{ .url | relLangURL }}"
+                       class="mainMenu-link godo-tracking hover:text-primary font-medium {{ if $active }}active{{ end }}"
+                       data-event-category="Header"
+                       data-event-action="Menu"
+                       data-event-non-interaction="true">
+                        {{ if .icon }}
+                        {{ else }}
+                        {{ .name }}
+                        {{ end }}
+                    </a>
+                </li>
+                {{ end }}
+
+                <li class="dropdown is-hoverable ml-5 hidden">
+                    <a href="#" class="mainMenu-link dropdown-trigger hover:text-primary font-medium">
+                        <span>More</span>
+                        <svg class="icon is-small transform rotate-90"><use xlink:href="#icon-arrow-forward"></use></svg>
+                    </a>
+                    <div class="dropdown-menu whitespace-normal">
+                        <div class="dropdown-content">
+                            <div class="js-dropdown-menu"></div>
+                            <hr class="dropdown-divider">
+                            <div class="js-social-media social-media social-media">
+
+                                <a href="https://twitter.com/jorgechato" title="undefined" class="hover:text-twitter p-2 inline-block" target="_blank" rel="noopener noreferrer"><svg class="icon icon--twitter"><use xlink:href="#icon-twitter"></use></svg></a><a href="http://github.com/jorgechato" title="undefined" class="hover:text-github p-2 inline-block" target="_blank" rel="noopener noreferrer"><svg class="icon icon--github"><use xlink:href="#icon-github"></use></svg></a><a href="https://www.linkedin.com/in/jorgechato" title="undefined" class="hover:text-linkedin p-2 inline-block" target="_blank" rel="noopener noreferrer"><svg class="icon icon--linkedin"><use xlink:href="#icon-linkedin"></use></svg></a></div>                </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+
+
+        <div class="header-right flex-none flex justify-end items-center u-menu-color">
+            <!--<a role="button" class="" aria-label="Dark and Light Mode">-->
+            <button type="checkbox" class="js-dark-mode button is-white items-center hidden mr-2 md:flex custom-control-input" id="darkSwitch">
+                {{ ":last_quarter_moon: " | emojify }}
+            </button>
+
+            <!--</a>-->
+
+            <a href="javascript:;" aria-label="Toggle Search" class="js-modal-button godo-tracking button is-white mr-2" data-target="modal-search" aria-haspopup="true" data-event-category="Header" data-event-action="Search" data-event-label="Click" data-event-non-interaction="true">
+                <svg class="icon icon--search"><use xlink:href="#icon-search"></use></svg>
+            </a>
+
+
+
+            <div class="js-menu-toggle menu-burger button is-white relative ml-2 lg:hidden"><span></span><span></span><span></span></div>
+        </div>
+    </div>
+</header>

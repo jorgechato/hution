@@ -1,19 +1,24 @@
 {{ if .Site.Params.social }}
-  <div>
+<div>
     {{ range $social :=  .Site.Params.social }}
-      <a href="{{ $social.url }}" target="_blank" name="{{ $social.name }}"
-        ><em class="{{ $social.icon }}"></em
-      ></a>
+    <a href="{{ $social.url }}"
+       target="_blank"
+       name="{{ $social.name }}">
+        <em class="{{ $social.icon }}"></em>
+    </a>
     {{ end }}
-{{ end }}
-{{ if .Site.Params.social_static }}
+    {{ end }}
+    {{ if .Site.Params.social_static }}
     {{ $base := .Site.BaseURL }}
     {{ range $social :=  .Site.Params.social_static }}
-    <a class="social-icon" href="{{ $social.url }}" target="_blank" name="{{ $social.name }}">
-    <img src="{{ $base }}images/{{ $social.icon }}"
-        width="20"
-        height="20"
-        alt="{{ $social.name }}">
+    <a class="social-icon"
+       href="{{ $social.url }}"
+       target="_blank"
+       name="{{ $social.name }}">
+        <img src="{{ $base }}images/{{ $social.icon }}"
+             width="20"
+             height="20"
+             alt="{{ $social.name }}">
     </a>
     {{end}}
 </div>

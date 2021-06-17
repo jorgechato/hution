@@ -1,28 +1,24 @@
-<footer>
-    {{ if .IsTranslated }}
-    <p>
-        {{ range .Translations }}
-        <a href="{{ .Permalink }}" name="{{ .Language.LanguageName }}">{{ .Language.LanguageName }}</a>
-        {{ end }}
-    </p>
-    {{ end }}
-    <div class="container">
-        <p class="credits copyright">
-            &copy; {{ .Site.LastChange.Format "2006" }}
-            {{ if .Site.Title }}
-            <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>.
-            {{ end }}
-            {{ i18n "all-rights" }}.
-        </p>
+<footer class="footer-light py-10 lg:pt-16 text-center lg:text-left ">
+    <div class="mx-auto max-w-extreme px-4">
+        <div class="flex flex-col lg:flex-row justify-between">
+            <div class="footer-copy text-sm order-3 mt-8 flex-none lg:text-left lg:order-none lg:mt-0">
+                &copy; {{ .Site.LastChange.Format "2006" }}
+                {{ if .Site.Title }}
+                <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>.
+                {{ end }}
+                {{ i18n "all-rights" }}.
+                <div class="mt-2">
+                    {{ i18n "design-with" }} <span class="icon animated infinite pulse">{{ ":heart:" | emojify }}</span> {{ i18n "by" }}
+                    <a href="https://jorgechato.com/">@jorgechato</a>.
+                    <a href="https://github.com/jorgechato/hution">Hution</a> {{ i18n "theme" }}.
+                </div>
+            </div>
 
-        <p class="credits theme-by">
-            {{ i18n "design-with" }} {{ ":heart:" | emojify }} {{ i18n "by" }}
-            <a href="https://jorgechato.com/">@jorgechato</a>.
-            <a href="https://github.com/jorgechato/hution">Hution</a> {{ i18n "theme" }}.
-        </p>
-    </div>
-    {{ partial "social.html" . }}
+            <div class="js-social-media social-media footer-social-media mt-8 flex-none lg:mt-0 is-inline">
+                {{ partial "social.html" . }}
 
-    {{ partial "style.html" . }}
-    {{ partial "script.html" . }}
+                {{ partial "style.html" . }}
+                {{ partial "script.html" . }}
+            </div>
+        </div>
 </footer>

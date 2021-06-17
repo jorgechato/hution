@@ -1,12 +1,16 @@
 <meta charset="utf-8" />
-<title>{{ .Title }}</title>
+<title>
+    {{ if .Title }}
+    {{ .Title }} |
+    {{ end }}
+    {{ .Site.Title }}
+</title>
 {{ with .Site.Params.description }}
   <meta name="description" content="{{ . }}" />
 {{ end }}
 {{- with .Site.Author.Name }}
   <meta name="author" content="{{ . }}" />
 {{- end }}
-{{ partial "analytics.html" . }}
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link
@@ -24,4 +28,11 @@
 {{ template "_internal/twitter_cards.html" . }}
 {{ if isset .Site.Taxonomies "series" }}
   {{ template "_internal/opengraph.html" . }}
+{{ end }}
+{{ if .Site.Params.googleAnalytics }}
+    {{ if in .Site.Params.googleAnalytics "UA-" }}
+      {{ template "_internal/google_analytics_async.html" . }}
+    {{ else }}
+      {{ template "_internal/google_analytics.html" . }}
+    {{ end }}
 {{ end }}

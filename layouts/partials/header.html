@@ -2,41 +2,37 @@
 {{ $.Scratch.Set "title" .Title }}
 {{ end }}
 
+{{ partial "nav.html" . }}
 {{ $title := $.Scratch.Get "title" }}
 {{ if $title }}
-<header>
-    {{ partial "nav.html" . }}
+<div class="post-header px-4 mx-auto max-w-740 relative z-3 pt-8">
     <div class="intro-header">
-        <div class="container">
-            <div class="{{ .Type }}-heading">
-                {{ if eq .Type "post" }}
-                {{ partial "posttags.html" . }}
-                {{ end }}
+        <div class="{{ .Type }}-heading">
+            {{ if eq .Type "post" }}
+            {{ partial "posttagstop.html" . }}
+            {{ end }}
 
+            <h1 class="post-title text-32 md:text-4xl lg:text-44 text-title">
                 {{ if .Params.Emoji }}
-                {{ .Params.Emoji | emojify }}
+                <span class="emoji">{{ .Params.Emoji | emojify }}</span>
                 {{ end }}
 
                 {{ if eq .Type "list" }}
-                <h1>{{ if .Data.Singular }}#{{ end }}{{ .Title }}</h1>
+                {{ if .Data.Singular }}#{{ end }}{{ .Title }}
                 {{ else }}
-                <h1>{{ with $title }}{{ . }}{{ else }}<br/>{{ end }}</h1>
+                {{ with $title }}{{ . }}{{ else }}<br/>{{ end }}
                 {{ end }}
+            </h1>
 
-                {{ if eq .Type "post" }}
-                {{ if .Params.Summary }}
-                <div class="post-entry">
-                    <p>{{ .Params.Summary }}</p>
-                </div>
-                {{ end }}
-                {{ partial "postmeta.html" . }}
-                {{ end }}
+            {{ if eq .Type "post" }}
+            {{ if .Params.Summary }}
+            <div class="post-excerpt mt-6 text-22 text-gray-500">
+                <p>{{ .Params.Summary }}</p>
             </div>
+            {{ end }}
+            {{ partial "postmeta.html" . }}
+            {{ end }}
         </div>
     </div>
-</header>
-{{ else }}
-<header>
-    {{ partial "nav.html" . }}
-</header>
+</div>
 {{ end }}
