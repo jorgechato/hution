@@ -1,0 +1,22 @@
+[data-theme="dark"] {
+    --bg: #111;
+    --blank: #111;
+    --body-color: #acacac;
+    --title-color: hsla(0,0%,100%,0.9);
+    --border-color: #2e2e2e;
+    --color-mark: #31422d;
+    --header-color: #fff;
+    --header-bg: #000;
+    --gray-100: #141414;
+    --gray-150: #141414;
+    --gray-200: #141414;
+    --gray-300: #1b1a1a;
+    --gray-500: #6c757d;
+    --gray-600: #a1a1aa;
+    --gray-700: #9e9a9a;
+    --gray-900: hsla(0,0%,100%,0.9);
+    --story-color: #888;
+    --story-small-bg: #191919;
+    --card-bg: #181818;
+    --dropdown-bg: #191b1f;
+}
