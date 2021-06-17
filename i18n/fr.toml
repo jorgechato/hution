@@ -20,3 +20,5 @@ other = "Tous les droits sont réservés"
 other = "min"
 [read]
 other = "de lecture"
+[toc]
+other = "Indice"
