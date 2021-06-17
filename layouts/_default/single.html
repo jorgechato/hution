@@ -1,6 +1,7 @@
 {{ define "main" }}
-<div class="container" role="main">
-    <article class="article" class="blog-post">
+<div class="post-wrap max-w-1100 relative mx-auto">
+<div class="px-4 mx-auto max-w-740 relative" role="main">
+    <article class="article post-body" id="post-body">
         {{ partial "toc.html" . }}
 
         {{ partial "posttags.html" . }}
@@ -14,5 +15,6 @@
     {{ if (not (isset .Params "disable_comments")) }}
     {{ partial "disqus.html" . }}
     {{ end }}
+</div>
 </div>
 {{ end }}
