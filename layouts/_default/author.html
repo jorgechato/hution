@@ -1,0 +1,21 @@
+{{ define "main" }}
+<main class="simply-main relative min-h-lg ">
+    <div class="simply-hero-cover author shadow flex items-center justify-center relative min-h-lg py-24 bg-black">
+        <article class="container relative flex flex-col text-center z-3 pt-16">
+            <figure class="author-avatar animated bounceInDown relative mx-auto">
+                <img class="avatar avatar-author is-100x100 rounded-full object-cover no-zoom" src="{{ .Params.photo }}" />
+            </figure>
+            <h1 class="cover-title animated bounceIn text-4xl lg:text-5xl underscore is-center mt-5 text-white">{{ .Params.name }}</h1>
+            <span class="cover-des mx-auto mb-8 text-xl text-white max-w-3xl">
+                {{ partial "toc.html" . }}
+            </span>
+            <div class="author-meta buttons justify-center">
+                <span class="author-location button is-transparent">
+                {{ ":world_map: " | emojify }}{{ .Params.location }}
+                </span>
+            </div>
+        </article>
+    </div>
+    {{ partial "postlist.html" . }}
+</main>
+{{ end }}
