@@ -1,16 +1,13 @@
 <div class="site-post feed-entry-content py-12 px-4" role="main">
     <div class="mx-auto max-w-1100 feed-entry-wrap">
         <div class="posts-list">
+            {{ $pag := .Paginator.Pages }}
             {{ if .IsHome }}
             {{ $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
-            {{ else }}
-            {{ $pag := .Paginator.Pages }}
             {{ end }}
 
-            {{ range .Paginator.Pages }}
-            {{ if not .Params.Draft }}
+            {{ range $pag }}
             {{ partial "preview.html" . }}
-            {{ end }}
             {{ end }}
         </div>
         {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
