@@ -1,1 +1,15 @@
-{{ define "main" }} {{ end }}
+{{ define "main" }}
+<section class="errorPage leading-none py-12 lg:py-vw8">
+    <div class="errorPage-wrap container mx-auto text-center text-gray-500">
+        <div class="errorPage-emoji font-bold text-title text-8xl lg:text-9xl">
+            404
+        </div>
+        <h1>Whoops! Page not found</h1>
+        <div class="errorPage-text mt-10">
+            That page can't be found.
+
+            Our latest content is <a href="/" class="link">on the homepage</a>.
+        </div>
+    </div>
+</section>
+{{ end }}
