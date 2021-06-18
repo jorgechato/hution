@@ -29,8 +29,8 @@
 {{ if isset .Site.Taxonomies "series" }}
   {{ template "_internal/opengraph.html" . }}
 {{ end }}
-{{ if .Site.Params.googleAnalytics }}
-    {{ if in .Site.Params.googleAnalytics "UA-" }}
+{{ if .Site.GoogleAnalytics }}
+    {{ if in .Site.GoogleAnalytics "UA-" }}
       {{ template "_internal/google_analytics_async.html" . }}
     {{ else }}
       {{ template "_internal/google_analytics.html" . }}
