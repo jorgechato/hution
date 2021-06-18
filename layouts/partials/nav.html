@@ -7,9 +7,6 @@
             </a>
         </div>
         {{ end }}
-
-
-
         <nav class="header-center mainMenu relative flex items-center pr-5 flex-grow overflow-auto lg:overflow-visible">
             <ul itemscope="" itemtype="http://www.schema.org/SiteNavigationElement" class="nav whitespace-no-wrap hidden lg:flex">
 
@@ -42,29 +39,81 @@
                             <hr class="dropdown-divider">
                             <div class="js-social-media social-media social-media">
 
-                                <a href="https://twitter.com/jorgechato" title="undefined" class="hover:text-twitter p-2 inline-block" target="_blank" rel="noopener noreferrer"><svg class="icon icon--twitter"><use xlink:href="#icon-twitter"></use></svg></a><a href="http://github.com/jorgechato" title="undefined" class="hover:text-github p-2 inline-block" target="_blank" rel="noopener noreferrer"><svg class="icon icon--github"><use xlink:href="#icon-github"></use></svg></a><a href="https://www.linkedin.com/in/jorgechato" title="undefined" class="hover:text-linkedin p-2 inline-block" target="_blank" rel="noopener noreferrer"><svg class="icon icon--linkedin"><use xlink:href="#icon-linkedin"></use></svg></a></div>                </div>
+                                {{ range .Site.Params.social }}
+                                <a href="{{ .url | relLangURL }}"
+                                   title="undefined"
+                                   class="hover:text-{{ .name }} p-2 inline-block"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    {{ if .icon }}
+                                    {{ .icon }}
+                                    {{ else }}
+                                    {{ .name }}
+                                    {{ end }}
+                                </a>
+                                {{ end }}
+                            </div>
+                        </div>
                     </div>
                 </li>
             </ul>
         </nav>
 
-
-
         <div class="header-right flex-none flex justify-end items-center u-menu-color">
-            <!--<a role="button" class="" aria-label="Dark and Light Mode">-->
+            <!--dark mode-->
             <button type="checkbox" class="js-dark-mode button is-white items-center hidden mr-2 md:flex custom-control-input" id="darkSwitch">
                 {{ ":last_quarter_moon: " | emojify }}
             </button>
 
-            <!--</a>-->
-
+            <!--search-->
             <a href="javascript:;" aria-label="Toggle Search" class="js-modal-button godo-tracking button is-white mr-2" data-target="modal-search" aria-haspopup="true" data-event-category="Header" data-event-action="Search" data-event-label="Click" data-event-non-interaction="true">
                 <svg class="icon icon--search"><use xlink:href="#icon-search"></use></svg>
             </a>
-
-
-
             <div class="js-menu-toggle menu-burger button is-white relative ml-2 lg:hidden"><span></span><span></span><span></span></div>
         </div>
     </div>
 </header>
+
+<!--Burger menu-->
+<div class="nav-mob fixed inset-0 pt-16 pb-5 bg-header h-screen z-10 w-full text-center lg:hidden">
+    <div class="nav-mob-wrap absolute inset-0 top-16 py-5 overflow-auto flex justify-between flex-col">
+
+        <div class="py-4 flex justify-center md:hidden buttons">
+            <a role="button" class="js-dark-mode button is-white" aria-label="Dark and Light Mode">
+                {{ ":last_quarter_moon: " | emojify }}
+            </a>
+        </div>
+
+        <div class="py-4">
+            <ul>
+                {{ range .Site.Params.nav }}
+                <li>
+                    <a href="{{ .url | relLangURL }}"
+                       class="block px-5 py-2 font-medium text-22 leading-tight">
+                        {{ if .icon }}
+                        {{ else }}
+                        {{ .name }}
+                        {{ end }}
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+
+        <div class="js-social-media social-media nav-mob-social-media social-media is-inline py-4">
+            {{ range .Site.Params.social }}
+            <a href="{{ .url | relLangURL }}"
+               title="undefined"
+               class="hover:text-{{ .name }} p-2 inline-block"
+               target="_blank"
+               rel="noopener noreferrer">
+                {{ if .icon }}
+                {{ .icon }}
+                {{ else }}
+                {{ .name }}
+                {{ end }}
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</div>
