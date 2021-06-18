@@ -44,3 +44,7 @@ img {
 .avatar-author {
     display: initial;
 }
+
+.story-title {
+    margin: 0 0 .4em;
+}
