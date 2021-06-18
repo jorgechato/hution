@@ -4,7 +4,7 @@
         {{ range .Params.tags }}
         <a
                 class="button is-light font-medium text-sm capitalize godo-tracking"
-                href="{{ "" | absLangURL }}tags/{{ . | urlize }}{{ if $.Site.Params.uglyurls }}.html{{else}}/{{ end }}">
+                href="{{ "" | absLangURL }}/tags/{{ . | urlize }}{{ if $.Site.Params.uglyurls }}.html{{else}}/{{ end }}">
             {{ . }}
         </a>&nbsp;
         {{ end }}
