@@ -1,10 +1,11 @@
 {{ if .Site.Params.social }}
-<div>
+<div class="js-social-media social-media footer-social-media flex-none lg:mt-0 is-inline">
     {{ range $social :=  .Site.Params.social }}
     <a href="{{ $social.url }}"
        target="_blank"
+       class="hover:text-{{ $social.name }} p-2 inline-block"
        name="{{ $social.name }}">
-        <em class="{{ $social.icon }}"></em>
+        <em class="{{ $social.icon }}" data-fa-transform="shrink--6"></em>
     </a>
     {{ end }}
     {{ end }}
