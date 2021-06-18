@@ -1,8 +1,14 @@
 <!-- script -->
 {{ partial "backtotop.html" . }}
+<script>
+let darkMode = localStorage.getItem("theme");
+if (darkMode === 'dark') {
+    document.documentElement.classList.add('dark');
+}
+</script>
 <script src="{{ .Site.BaseURL }}/js/main.js"></script>
-<script src="{{ .Site.BaseURL }}/js/dark-mode-switch.min.js"></script>
 <script src="{{ .Site.BaseURL }}/js/zooming.min.js"></script>
+<script src="{{ .Site.BaseURL }}/js/fontawesome.all.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     new Zooming({
