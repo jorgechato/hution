@@ -1,4 +1,11 @@
 <!-- Stylesheets -->
+{{ with .Site.Params.color }}
+<style>
+:root {
+    --ghost-accent-color: {{ . }}!important;
+}
+</style>
+{{- end }}
 <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/main.css"/>
 <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/base.css"/>
 

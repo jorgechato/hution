@@ -4,12 +4,12 @@
             <div class="footer-copy text-sm order-3 mt-8 flex-none lg:text-left lg:order-none lg:mt-0">
                 &copy; {{ .Site.LastChange.Format "2006" }}
                 {{ if .Site.Title }}
-                <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>.
+                <a href="{{ "" | absLangURL }}" class="link">{{ .Site.Title }}</a>.
                 {{ end }}
                 {{ i18n "all-rights" }}.
-                <div class="mt-2">
+                <div class="mt-2 text-xs">
                     {{ i18n "design-with" }} <span class="icon animated infinite pulse">{{ ":heart:" | emojify }}</span>{{ i18n "by" }}
-                    <a href="https://jorgechato.com/" class="link">@JorgeChato</a>.
+                    <a href="https://jorgechato.com/">@JorgeChato</a>.
                     <a href="https://github.com/jorgechato/hution">Hution</a> {{ i18n "theme" }}.
                 </div>
             </div>
