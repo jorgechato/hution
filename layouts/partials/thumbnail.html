@@ -1,0 +1,5 @@
+{{ if .Params.thumbnail }}
+{{ $thumbnail := .Params.thumbnail }}
+<img class="mt-12 storySmall-img object-cover w-full h-48 blur-up lazyautosizes lazyloaded" src="{{ $thumbnail }}"
+    alt="{{ .Title }}" />
+{{ end }}

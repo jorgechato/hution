@@ -11,19 +11,20 @@
             {{ if eq .Type "post" }}
             {{ partial "posttagstop.html" . }}
             {{ end }}
-
+            
             <h1 class="post-title text-32 md:text-4xl lg:text-44 text-title">
                 {{ if .Params.Emoji }}
                 <span class="emoji">{{ .Params.Emoji | emojify }}</span>
                 {{ end }}
-
+                
                 {{ if eq .Type "list" }}
                 {{ if .Data.Singular }}#{{ end }}{{ .Title }}
                 {{ else }}
                 {{ with $title }}{{ . }}{{ else }}<br/>{{ end }}
                 {{ end }}
             </h1>
-
+            {{ partial "thumbnail.html" . }}
+            
             {{ if eq .Type "post" }}
             {{ if .Params.Summary }}
             <div class="post-excerpt mt-6 text-22 text-gray-500">

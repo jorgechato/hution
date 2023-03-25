@@ -32,6 +32,7 @@ disqusShortName = "yourdisqusshortname"
 
 [params]
 mainSections = ["post"]
+customCSS = ["/custom.css"]
 favicon = "/img/favicon.png"
 color = "#FFFFFF"
 
@@ -53,4 +54,23 @@ category = "categories"
   name="name of social media"
   url="link to social media"
   icon="A icon from https://fontawesome.com/"
+```
+
+## Posts
+
+```md
+---
+title: ""
+date: "2020-04-23T14:17:03Z"
+author: ""
+categories:
+- hack 
+tags:
+- hack
+toc: true
+thumbnail: ""
+summary: ""
+---
+
+# Introduction ...
 ```
