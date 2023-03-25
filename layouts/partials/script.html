@@ -19,4 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 </script>
 
+{{ range .Site.Params.customJS }}
+<script src="{{ . | absURL }}"></script>
+{{ end }}
+
 {{ hugo.Generator -}}
