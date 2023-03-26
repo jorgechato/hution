@@ -50,6 +50,11 @@ body {
     grid-column-end: 2;
 }
 
+.thumbnail {
+    height: 190px;
+    max-height: 190px;
+}
+
 figure {
     display: inline-block;
     margin: 0 0 0 0;
@@ -71,4 +76,11 @@ img {
 
 .story-title {
     margin: 0 0 .4em;
+}
+
+.summary {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
