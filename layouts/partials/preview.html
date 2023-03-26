@@ -2,27 +2,26 @@
     {{ if .Params.thumbnail }}
     {{ $thumbnail := .Params.thumbnail }}
     <a href="{{ .Permalink }}" class="col-small">
-        <div class=" story-image mb-5 h-52 relative overflow-hidden">
-            <img class="story-img inset-image block blur-up lazyautosizes lazyloaded" src="{{ $thumbnail }}"
-                alt="{{ .Title }}" />
-        </div>
+        <div class="thumbnail" style="background-image: url('{{ $thumbnail }}');background-size: cover;"></div>
     </a>
-    {{ end }}
     <article class="col-big">
-        <a href="{{ .Permalink }}" class="">
+        {{ else }}
+        <article class="col-big" style="grid-column-start:1;">
+            {{ end }}
+            <a href="{{ .Permalink }}" class="">
 
 
-            <h2 class="post-title story-title text-2xl font-sans text-title leading-tight">
-                {{ if .Params.Emoji }}
-                {{ .Params.Emoji | emojify }}
-                {{ end }}
-                {{ .Title }}
-            </h2>
-        </a>
-        {{ if .Params.Summary }}
-        <div class="post-entry story-excerpt leading-normal text-gray-500">
-            <p class="story-excerpt mb-5 text-lg leading-normal text-gray-500">{{ .Params.Summary }}</p>
-        </div>
-        {{ end }}
-    </article>
+                <h2 class="post-title story-title text-2xl font-sans text-title leading-tight">
+                    {{ if .Params.Emoji }}
+                    {{ .Params.Emoji | emojify }}
+                    {{ end }}
+                    {{ .Title }}
+                </h2>
+            </a>
+            {{ if .Params.Summary }}
+            <div class="post-entry story-excerpt leading-normal text-gray-500">
+                <p class="story-excerpt mb-5 text-lg leading-normal text-gray-500">{{ .Params.Summary }}</p>
+            </div>
+            {{ end }}
+        </article>
 </div>
