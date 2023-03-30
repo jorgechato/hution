@@ -20,7 +20,11 @@
                        data-event-category="Header"
                        data-event-action="Menu"
                        data-event-non-interaction="true">
-                        {{ .name }}
+                        {{ if .icon }}
+                            <em class="{{ .icon }}" data-fa-transform="shrink--6"></em>
+                        {{ else }}
+                            {{ .name }}
+                        {{ end }}
                     </a>
                 </li>
                 {{ end }}
